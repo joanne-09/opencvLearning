@@ -5,6 +5,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import torch.nn as nn
 
+## function for logisticRegression.py
 ## this class is just to help visualize the data space and the parameter space
 # create class for plotting
 class plot_error_surfaces(object):
@@ -34,13 +35,13 @@ class plot_error_surfaces(object):
         self.LOSS = []
         self.n = 0
         if go == True:
-            plt.figure()
             plt.figure(figsize=(7.5, 5))
             plt.axes(projection='3d').plot_surface(self.w, self.b, self.Z, rstride=1, cstride=1, cmap='viridis', edgecolor='none')
             plt.title('Loss Surface')
             plt.xlabel('w')
             plt.ylabel('b')
             plt.show()
+
             plt.figure()
             plt.title('Loss Surface Contour')
             plt.xlabel('w')
@@ -119,7 +120,8 @@ class Data(Dataset):
     def __len__(self):
         return self.len
 
-  
+
+# create a custom class thet defines the architecture of Logistic Regression
 # Create logistic_regression class that inherits nn.Module which is the base class for all neural networks
 class logistic_regression(nn.Module):
     
@@ -134,3 +136,51 @@ class logistic_regression(nn.Module):
         # Using the input x value puts it through the single layer defined above then puts the output through the sigmoid function and returns the result
         yhat = torch.sigmoid(self.linear(x))
         return yhat
+    
+
+## functions for softmaxClassification
+# The function to plot parameters
+def PlotParameters(model): 
+    W = model.state_dict()['linear.weight'].data
+    w_min = W.min().item()
+    w_max = W.max().item()
+    fig, axes = plt.subplots(2, 5)
+    fig.subplots_adjust(hspace=0.01, wspace=0.1)
+    for i, ax in enumerate(axes.flat):
+        if i < 10:
+            
+            # Set the label for the sub-plot.
+            ax.set_xlabel("class: {0}".format(i))
+
+            # Plot the image.
+            ax.imshow(W[i, :].view(28, 28), vmin=w_min, vmax=w_max, cmap='seismic')
+
+            ax.set_xticks([])
+            ax.set_yticks([])
+
+        # Ensure the plot is shown correctly with multiple plots
+        # in a single Notebook cell.
+    plt.show()
+
+
+# Plot the data
+def show_data(data_sample):
+    plt.imshow(data_sample[0].numpy().reshape(28, 28), cmap='gray')
+    plt.title('y = ' + str(data_sample[1].item()))
+
+
+## Define softmax classifier class
+# Inherits nn.Module which is the base class for all neural networks
+class SoftMax(nn.Module):
+    
+    # Constructor
+    def __init__(self, input_size, output_size):
+        super(SoftMax, self).__init__()
+        # Creates a layer of given input size and output size
+        self.linear = nn.Linear(input_size, output_size)
+        
+    # Prediction
+    def forward(self, x):
+        # Runs the x value through the single layers defined above
+        z = self.linear(x)
+        return z
