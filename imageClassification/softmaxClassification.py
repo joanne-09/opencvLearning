@@ -41,6 +41,8 @@ print("The image: ", helper.how_data(train_dataset[3]))
 helper.show_data(train_dataset[2])
 
 ## build a softmax classifier
+## the extension of logistic regression
+## softmax classifier is used for multi-class classification
 
 # Print the shape of the training dataset
 # requires vector inputs, shape is 28x28
@@ -51,6 +53,7 @@ input_dim = 28 * 28
 output_dim = 10
 
 ## define the softmax classifier, criterion function, optimizer and train the model
+
 # Create the model
 # Input dim is 28*28 which is the image converted to a tensor
 # Output dim is 10 because there are 10 possible digits the image can be
@@ -74,6 +77,8 @@ X = X.view(-1, 28*28)
 print(X.shape)
 # Now we can make a prediction, each class has a value, and the higher it is the more confident the model is that it is that digit
 model(X)
+
+## using validation data to modify learning_rate and find the best division
 
 # Define the learning rate, optimizer, criterion, and data loader
 learning_rate = 0.1

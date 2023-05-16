@@ -39,6 +39,11 @@ def load_images(image_paths):
         train_images.append(hog_features)
         train_labels.append(label)
 
+## support vector machines classifier
+## a kernel model can be linear, poly, rbf
+## find a line(plain) to distinguish two kinds of data
+## only used for two-class classification
+
 # Initialize the CV Studio Client
 cvstudioClient = cvstudio.CVStudio()
 # Download All Images

@@ -74,12 +74,16 @@ plt.show()
 
 # /*---------------*/
 # hand-written classification with SVM model
+# use kernel(linear, poly, rbf) to divide datas
+# SVM linear model
+# use a line to divide two kinds of data
 # /*---------------*/
 
 # create and fit the SVM model to classify hand-written nums
 svm_classifier = svm.SVC(gamma='scale')
+# train the model
 svm_classifier.fit(X_train, y_train)
-# predict for test set
+# use test data to predict the model
 y_pred_svm = svm_classifier.predict(X_test)
 # get accuracy for the model
 # it is nearly perfect(0.9916666666667)

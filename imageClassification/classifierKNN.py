@@ -14,6 +14,11 @@ from sklearn.metrics import confusion_matrix
 import os
 from skillsnetwork import cvstudio
 
+## k-nearest neighbors classifier
+## by setting two different types of data into two distinct numbers
+## calculate the number of an unknown image and find the nearest neighbor to classify it
+## can be used for multi-class classification
+
 # Initialize the CV Studio Client
 cvstudioClient = cvstudio.CVStudio()
 

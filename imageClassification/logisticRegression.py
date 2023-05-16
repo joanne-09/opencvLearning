@@ -13,6 +13,7 @@ import helperFunc as helper
 # /*---------------*/
 # logistic regression
 # aim at finding a line that can clearly divide datas and classify them
+# only used for two-class classification
 # /*---------------*/
 
 # setting the seed will allow us to control randomness
