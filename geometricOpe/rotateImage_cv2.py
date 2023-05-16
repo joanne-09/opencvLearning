@@ -30,6 +30,6 @@ cols, rows, _=image.shape
 
 # rotate the image by 45 degree countercolckwise
 M_new = cv2.getRotationMatrix2D(center=(cols//2 -1,rows//2 -1), angle=theta, scale=1)
-new_image = cv2.warpAffine(image, M, (cols, rows))
+new_image = cv2.warpAffine(image, M_new, (cols, rows))
 plt.imshow(new_image)
 plt.show()
