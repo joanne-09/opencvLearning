@@ -47,7 +47,9 @@ def accuracy(model, data_set):
 # /*---------------*/
 
 # define the neural network module or class
-# Define the class Net with one hidden layer 
+# Define the class Net with one hidden layer
+# hidden layers can store neurons and execute calculation
+# the more layers the more accurate the model is
 class Net(nn.Module):
     # Constructor
     def __init__(self, D_in, H, D_out):
