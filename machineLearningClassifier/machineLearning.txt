@@ -75,3 +75,7 @@ s:state  a:action  r:reward  t:time
 - Confusion matrix(混淆矩陣): 用一個矩陣判斷資料是否有正確分類
   x-axis: 預測標籤
   y-axis: 實際標籤
+
+9. 名詞解釋
+- epoch
+  資料組完全通過演算法一次稱為一個epoch
